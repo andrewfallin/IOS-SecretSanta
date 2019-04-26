@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		C48CC4B62272A6B20068069D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48CC4B52272A6B20068069D /* AppDelegate.swift */; };
-		C48CC4B82272A6B20068069D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48CC4B72272A6B20068069D /* ViewController.swift */; };
 		C48CC4BB2272A6B20068069D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48CC4B92272A6B20068069D /* Main.storyboard */; };
 		C48CC4BE2272A6B20068069D /* IOS_SecretSantaApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C48CC4BC2272A6B20068069D /* IOS_SecretSantaApp.xcdatamodeld */; };
 		C48CC4C02272A6B30068069D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C48CC4BF2272A6B30068069D /* Assets.xcassets */; };
 		C48CC4C32272A6B30068069D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48CC4C12272A6B30068069D /* LaunchScreen.storyboard */; };
+		C48CC4CB2272A8DB0068069D /* SantaStartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48CC4CA2272A8DB0068069D /* SantaStartPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C48CC4B22272A6B20068069D /* IOS-SecretSantaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS-SecretSantaApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C48CC4B52272A6B20068069D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C48CC4B72272A6B20068069D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C48CC4BA2272A6B20068069D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C48CC4BD2272A6B20068069D /* IOS_SecretSantaApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IOS_SecretSantaApp.xcdatamodel; sourceTree = "<group>"; };
 		C48CC4BF2272A6B30068069D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C48CC4C22272A6B30068069D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C48CC4C42272A6B30068069D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C48CC4CA2272A8DB0068069D /* SantaStartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SantaStartPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +57,12 @@
 			isa = PBXGroup;
 			children = (
 				C48CC4B52272A6B20068069D /* AppDelegate.swift */,
-				C48CC4B72272A6B20068069D /* ViewController.swift */,
 				C48CC4B92272A6B20068069D /* Main.storyboard */,
 				C48CC4BF2272A6B30068069D /* Assets.xcassets */,
 				C48CC4C12272A6B30068069D /* LaunchScreen.storyboard */,
 				C48CC4C42272A6B30068069D /* Info.plist */,
 				C48CC4BC2272A6B20068069D /* IOS_SecretSantaApp.xcdatamodeld */,
+				C48CC4CA2272A8DB0068069D /* SantaStartPage.swift */,
 			);
 			path = "IOS-SecretSantaApp";
 			sourceTree = "<group>";
@@ -139,7 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C48CC4BE2272A6B20068069D /* IOS_SecretSantaApp.xcdatamodeld in Sources */,
-				C48CC4B82272A6B20068069D /* ViewController.swift in Sources */,
+				C48CC4CB2272A8DB0068069D /* SantaStartPage.swift in Sources */,
 				C48CC4B62272A6B20068069D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
