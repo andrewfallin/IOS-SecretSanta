@@ -11,6 +11,7 @@ import UIKit
 
 class SantaCell: UITableViewCell{
     
+    @IBOutlet weak var promptLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

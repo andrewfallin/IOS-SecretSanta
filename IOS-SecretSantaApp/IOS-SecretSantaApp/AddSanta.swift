@@ -40,7 +40,7 @@ class AddSanta: UIViewController {
     
     }
     @objc func cancelTapped(){
-        
+        performSegue(withIdentifier: "cancelAddSegue", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,7 +48,7 @@ class AddSanta: UIViewController {
             let newEPage = segue.destination as! NewExchangePage
             if (santaInfoArray.isEmpty != true){
                 newEPage.newSantas[santaInfoArray[0]] = santaInfoArray[1]
-               // newEPage.tableView.reloadData()
+                newEPage.santaList.reloadData()
             }
             
         }

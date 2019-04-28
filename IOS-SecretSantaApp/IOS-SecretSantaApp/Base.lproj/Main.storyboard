@@ -123,11 +123,11 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Santas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEd-3D-e69">
-                                <rect key="frame" x="25" y="166" width="67" height="27"/>
+                                <rect key="frame" x="25" y="166" width="82" height="27"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="67" id="Y7d-Oh-INe"/>
+                                    <constraint firstAttribute="width" constant="82" id="Y7d-Oh-INe"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -171,13 +171,15 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljO-8Y-F11">
-                                <rect key="frame" x="260" y="159" width="100" height="39"/>
+                                <rect key="frame" x="241" y="159" width="119" height="39"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="j54-bb-7sD"/>
+                                    <constraint firstAttribute="width" constant="119" id="j54-bb-7sD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="22"/>
+                                <size key="titleShadowOffset" width="1" height="0.0"/>
                                 <state key="normal" title="Add Santa">
-                                    <color key="titleColor" red="0.99955540895462036" green="0.0043649729341268539" blue="0.0063005317933857441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="Pz5-bw-poC" kind="show" identifier="addNewSantaSegue" id="SIK-eK-1vF"/>
@@ -221,7 +223,7 @@
                         <outlet property="datePicker" destination="4Pz-Yk-r2z" id="3GW-b9-kpD"/>
                         <outlet property="exName" destination="G7a-S9-VAY" id="nH5-yt-Amr"/>
                         <outlet property="priceCap" destination="fC2-y8-BvX" id="6Ah-lm-cR0"/>
-                        <outlet property="santaList" destination="z2J-P1-lw8" id="nBh-H8-Pym"/>
+                        <outlet property="santaList" destination="z2J-P1-lw8" id="A2E-z6-KPr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDv-ka-nx6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -263,15 +265,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6E-80-uyn">
-                                <rect key="frame" x="246" y="401" width="99" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Add Santa">
-                                    <color key="titleColor" red="0.99955540895462036" green="0.0043649729341268539" blue="0.0063005317933857441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -297,9 +290,12 @@
                     <connections>
                         <outlet property="santaEmail" destination="ok5-V9-BJZ" id="8qC-1O-0FJ"/>
                         <outlet property="santaName" destination="YGL-YQ-Kyh" id="Ka7-Bh-mpn"/>
+                        <segue destination="pdA-bV-8Fz" kind="unwind" identifier="cancelAddSegue" unwindAction="unwindToPageOneCancelWithSegue:" id="AH6-wQ-sTF"/>
+                        <segue destination="pdA-bV-8Fz" kind="unwind" identifier="saveNewSanta" unwindAction="unwindToPageOneAlternateSaveWithSeque:" id="aeK-g5-JUc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrb-rW-y6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pdA-bV-8Fz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1745" y="-340"/>
         </scene>

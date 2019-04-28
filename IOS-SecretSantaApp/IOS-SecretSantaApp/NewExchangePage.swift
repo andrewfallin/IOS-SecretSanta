@@ -12,9 +12,10 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     
-    var newSantas: [String: String] = ["Andrew":"Andrew.fallin@gmail.com"]
+    var newSantas: [String: String] = [:]
     var priceCapData: [String] = [String]()
    
+    
     @IBOutlet weak var exName: UITextField!
     @IBOutlet weak var santaList: UITableView!
     @IBOutlet weak var priceCap: UIPickerView!
@@ -56,7 +57,7 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,11 +66,10 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! SantaCell
-       /* let row = indexPath.row
-        let santas = Array(newSantas.keys)[row];
-        print(santas)
-        cell.promptLabel.text = santas*/
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        let row = indexPath.row
+        let santas = Array(newSantas.keys)[row]
+        cell.textLabel?.text = santas
         return cell
         
     }
@@ -99,5 +99,12 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func unwindToPageOneCancel( segue: UIStoryboardSegue){
+        
+    }
+    @IBAction func unwindToPageOneAlternateSave(seque: UIStoryboardSegue){
+        
+    }
+    
+   
 }
