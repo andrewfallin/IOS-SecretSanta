@@ -26,6 +26,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="XvB-uw-nmv" kind="show" id="qBY-lX-MaT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -36,7 +39,7 @@
                     <navigationItem key="navigationItem" title="Exchanges" prompt="Secret Santa" id="fwp-Gz-Sij">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OBE-9e-Qbs">
                             <connections>
-                                <segue destination="sVs-Sq-Tf8" kind="show" id="UyO-zw-L7O"/>
+                                <segue destination="sVs-Sq-Tf8" kind="show" identifier="addNewExchangeSegue" id="jTT-Ig-Rmb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -44,6 +47,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KK7-oA-q2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="297" y="175"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Qlu-QK-7oh">
+            <objects>
+                <viewController id="XvB-uw-nmv" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dNb-sQ-s4w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="outdoorChristmasTree.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="UCu-CQ-uKc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UCu-CQ-uKc" firstAttribute="bottom" secondItem="S5N-K7-EPI" secondAttribute="bottom" id="Kvm-hu-2LR"/>
+                            <constraint firstItem="UCu-CQ-uKc" firstAttribute="trailing" secondItem="S5N-K7-EPI" secondAttribute="trailing" id="bN1-N2-7Vz"/>
+                            <constraint firstItem="UCu-CQ-uKc" firstAttribute="top" secondItem="S5N-K7-EPI" secondAttribute="top" id="gUK-Gi-YAp"/>
+                            <constraint firstItem="UCu-CQ-uKc" firstAttribute="leading" secondItem="S5N-K7-EPI" secondAttribute="leading" id="wrc-1K-d9T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="S5N-K7-EPI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CqT-ib-Ynu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1072.8" y="378.26086956521743"/>
         </scene>
         <!--New Exchange Page-->
         <scene sceneID="0Hr-Pp-527">
@@ -53,44 +82,151 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z2J-P1-lw8">
-                                <rect key="frame" x="16" y="109" width="343" height="187"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="presents.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="PSo-Wk-s70">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z2J-P1-lw8">
+                                <rect key="frame" x="15" y="193" width="345" height="147"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="147" id="Ay5-6q-m1E"/>
+                                </constraints>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="9eY-X7-3x0">
+                                        <rect key="frame" x="0.0" y="28" width="345" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9eY-X7-3x0" id="Sul-k2-vQx" customClass="UILabel">
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYm-aM-fmq" userLabel="promptLabel">
+                                                    <rect key="frame" x="17" y="10.5" width="311" height="22.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iYm-aM-fmq" firstAttribute="centerX" secondItem="Sul-k2-vQx" secondAttribute="centerX" id="C8c-cL-OFh"/>
+                                                <constraint firstItem="iYm-aM-fmq" firstAttribute="centerY" secondItem="Sul-k2-vQx" secondAttribute="centerY" id="nuZ-KU-HQJ"/>
+                                                <constraint firstItem="iYm-aM-fmq" firstAttribute="bottom" secondItem="Sul-k2-vQx" secondAttribute="bottomMargin" id="tSp-Np-r34"/>
+                                                <constraint firstItem="iYm-aM-fmq" firstAttribute="leading" secondItem="Sul-k2-vQx" secondAttribute="leadingMargin" constant="2" id="vH7-Kc-AEg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="iYm-aM-fmq" secondAttribute="trailing" constant="2" id="zgd-Io-lw0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="sVs-Sq-Tf8" id="N8P-3W-vIL"/>
+                                    <outlet property="delegate" destination="sVs-Sq-Tf8" id="khK-Gp-r1g"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Santas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEd-3D-e69">
-                                <rect key="frame" x="26" y="80" width="53" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="25" y="166" width="67" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="67" id="Y7d-Oh-INe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CcX-wg-H5b">
-                                <rect key="frame" x="253" y="76" width="106" height="30"/>
-                                <state key="normal" title="Add New Santa"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Exchange" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBr-sD-ZDB">
+                                <rect key="frame" x="25" y="495" width="168" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fC2-y8-BvX">
+                                <rect key="frame" x="15" y="386" width="345" height="101"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="101" id="0RW-yM-uiX"/>
+                                </constraints>
+                            </pickerView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Pz-Yk-r2z">
+                                <rect key="frame" x="15" y="530" width="345" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="1AM-6e-sB3"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="578080495.66122496">
+                                    <!--2019-04-27 17:54:55 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Cap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH2-9m-fBA">
+                                <rect key="frame" x="25" y="359" width="93" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Exchange" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfQ-z3-lBX">
+                                <rect key="frame" x="25" y="84" width="180" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G7a-S9-VAY">
+                                <rect key="frame" x="16" y="116" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljO-8Y-F11">
+                                <rect key="frame" x="260" y="159" width="100" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="j54-bb-7sD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Add Santa">
+                                    <color key="titleColor" red="0.99955540895462036" green="0.0043649729341268539" blue="0.0063005317933857441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
-                                    <segue destination="Pz5-bw-poC" kind="show" id="Dis-5Z-whs"/>
+                                    <segue destination="Pz5-bw-poC" kind="show" identifier="addNewSantaSegue" id="SIK-eK-1vF"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="z2J-P1-lw8" firstAttribute="centerX" secondItem="VHl-z2-kQD" secondAttribute="centerX" id="0PI-gD-9wZ"/>
-                            <constraint firstItem="CcX-wg-H5b" firstAttribute="top" secondItem="emL-ay-12p" secondAttribute="top" constant="12" id="BHQ-xF-Ygp"/>
-                            <constraint firstItem="MEd-3D-e69" firstAttribute="leading" secondItem="emL-ay-12p" secondAttribute="leading" constant="26" id="Dbp-Aw-8fq"/>
-                            <constraint firstItem="z2J-P1-lw8" firstAttribute="leading" secondItem="emL-ay-12p" secondAttribute="leading" constant="16" id="Hk0-OQ-jeC"/>
-                            <constraint firstItem="MEd-3D-e69" firstAttribute="top" secondItem="emL-ay-12p" secondAttribute="top" constant="16" id="TVV-AW-twC"/>
-                            <constraint firstItem="emL-ay-12p" firstAttribute="trailing" secondItem="CcX-wg-H5b" secondAttribute="trailing" constant="16" id="Wqu-yk-GGB"/>
-                            <constraint firstItem="z2J-P1-lw8" firstAttribute="top" secondItem="CcX-wg-H5b" secondAttribute="bottom" constant="3" id="Zo2-sd-6Fb"/>
-                            <constraint firstItem="emL-ay-12p" firstAttribute="trailing" secondItem="MEd-3D-e69" secondAttribute="trailing" constant="296" id="i9m-po-8UH"/>
-                            <constraint firstItem="z2J-P1-lw8" firstAttribute="top" secondItem="MEd-3D-e69" secondAttribute="bottom" constant="8" id="jGc-M3-pwM"/>
-                            <constraint firstItem="emL-ay-12p" firstAttribute="trailing" secondItem="z2J-P1-lw8" secondAttribute="trailing" constant="16" id="le4-Tu-0f3"/>
-                            <constraint firstItem="CcX-wg-H5b" firstAttribute="leading" secondItem="MEd-3D-e69" secondAttribute="trailing" constant="174" id="sJa-gd-uzV"/>
+                            <constraint firstItem="z2J-P1-lw8" firstAttribute="leading" secondItem="4Pz-Yk-r2z" secondAttribute="leading" id="2km-Mn-YXH"/>
+                            <constraint firstItem="PSo-Wk-s70" firstAttribute="leading" secondItem="VHl-z2-kQD" secondAttribute="leading" id="5pR-0K-8R3"/>
+                            <constraint firstItem="G7a-S9-VAY" firstAttribute="leading" secondItem="emL-ay-12p" secondAttribute="leading" constant="16" id="8x5-0t-9BM"/>
+                            <constraint firstItem="FfQ-z3-lBX" firstAttribute="top" secondItem="emL-ay-12p" secondAttribute="top" constant="20" id="Af5-Q6-bR6"/>
+                            <constraint firstItem="emL-ay-12p" firstAttribute="bottom" secondItem="4Pz-Yk-r2z" secondAttribute="bottom" constant="46" id="AtF-Gf-8nu"/>
+                            <constraint firstItem="PSo-Wk-s70" firstAttribute="top" secondItem="emL-ay-12p" secondAttribute="top" id="F0v-Qu-aeL"/>
+                            <constraint firstItem="FfQ-z3-lBX" firstAttribute="leading" secondItem="MEd-3D-e69" secondAttribute="leading" id="FCE-E8-0cB"/>
+                            <constraint firstItem="z2J-P1-lw8" firstAttribute="centerX" secondItem="VHl-z2-kQD" secondAttribute="centerX" id="K7E-2i-Rt7"/>
+                            <constraint firstItem="G7a-S9-VAY" firstAttribute="top" secondItem="FfQ-z3-lBX" secondAttribute="bottom" constant="5" id="QM2-jf-5gg"/>
+                            <constraint firstItem="4Pz-Yk-r2z" firstAttribute="top" secondItem="iBr-sD-ZDB" secondAttribute="bottom" constant="8" symbolic="YES" id="QYS-2e-lRX"/>
+                            <constraint firstItem="PSo-Wk-s70" firstAttribute="bottom" secondItem="emL-ay-12p" secondAttribute="bottom" id="RXT-QQ-6i2"/>
+                            <constraint firstItem="z2J-P1-lw8" firstAttribute="centerX" secondItem="PSo-Wk-s70" secondAttribute="centerX" id="TiZ-xk-UDN"/>
+                            <constraint firstItem="FfQ-z3-lBX" firstAttribute="leading" secondItem="emL-ay-12p" secondAttribute="leading" constant="25" id="Xkv-i9-fhM"/>
+                            <constraint firstItem="ljO-8Y-F11" firstAttribute="top" secondItem="emL-ay-12p" secondAttribute="top" constant="95" id="dX3-RL-a6y"/>
+                            <constraint firstItem="FfQ-z3-lBX" firstAttribute="leading" secondItem="qH2-9m-fBA" secondAttribute="leading" id="fR2-5b-88B"/>
+                            <constraint firstItem="iBr-sD-ZDB" firstAttribute="top" secondItem="fC2-y8-BvX" secondAttribute="bottom" constant="8" symbolic="YES" id="fbu-Y2-yWX"/>
+                            <constraint firstItem="z2J-P1-lw8" firstAttribute="leading" secondItem="fC2-y8-BvX" secondAttribute="leading" id="luY-s5-9aA"/>
+                            <constraint firstItem="z2J-P1-lw8" firstAttribute="top" secondItem="MEd-3D-e69" secondAttribute="bottom" id="mEa-80-Skp"/>
+                            <constraint firstItem="emL-ay-12p" firstAttribute="trailing" secondItem="FfQ-z3-lBX" secondAttribute="trailing" constant="170" id="mse-bB-Lu7"/>
+                            <constraint firstItem="FfQ-z3-lBX" firstAttribute="leading" secondItem="iBr-sD-ZDB" secondAttribute="leading" id="nsj-u6-CDa"/>
+                            <constraint firstItem="qH2-9m-fBA" firstAttribute="top" secondItem="z2J-P1-lw8" secondAttribute="bottom" constant="19" id="oIV-og-Nwl"/>
+                            <constraint firstItem="z2J-P1-lw8" firstAttribute="trailing" secondItem="4Pz-Yk-r2z" secondAttribute="trailing" id="pf8-AU-PND"/>
+                            <constraint firstItem="z2J-P1-lw8" firstAttribute="trailing" secondItem="fC2-y8-BvX" secondAttribute="trailing" id="sd5-Iw-4iN"/>
+                            <constraint firstItem="MEd-3D-e69" firstAttribute="top" secondItem="G7a-S9-VAY" secondAttribute="bottom" constant="20" id="slf-WK-F26"/>
+                            <constraint firstItem="z2J-P1-lw8" firstAttribute="trailing" secondItem="ljO-8Y-F11" secondAttribute="trailing" id="vRD-rf-8Sd"/>
+                            <constraint firstItem="emL-ay-12p" firstAttribute="trailing" secondItem="G7a-S9-VAY" secondAttribute="trailing" constant="16" id="vhR-g5-xRW"/>
+                            <constraint firstItem="z2J-P1-lw8" firstAttribute="leading" secondItem="emL-ay-12p" secondAttribute="leading" constant="15" id="yId-ZK-NJy"/>
+                            <constraint firstItem="z2J-P1-lw8" firstAttribute="centerX" secondItem="G7a-S9-VAY" secondAttribute="centerX" id="yLj-GE-cQD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="emL-ay-12p"/>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="4Pz-Yk-r2z" id="3GW-b9-kpD"/>
+                        <outlet property="exName" destination="G7a-S9-VAY" id="nH5-yt-Amr"/>
+                        <outlet property="priceCap" destination="fC2-y8-BvX" id="6Ah-lm-cR0"/>
+                        <outlet property="santaList" destination="z2J-P1-lw8" id="nBh-H8-Pym"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDv-ka-nx6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="986" y="175"/>
+            <point key="canvasLocation" x="1072.8" y="-340.47976011994007"/>
         </scene>
         <!--Add Santa-->
         <scene sceneID="wxZ-Dq-yBN">
@@ -100,23 +236,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SantaPhoto.jpg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XWB-YD-nfU">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SantaPhoto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="XWB-YD-nfU">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLF-Tf-EQ5">
+                                <rect key="frame" x="20" y="187" width="96" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YeB-4n-ALt">
+                                <rect key="frame" x="20" y="296" width="96" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="YGL-YQ-Kyh">
+                                <rect key="frame" x="20" y="235" width="335" height="39"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="ok5-V9-BJZ">
+                                <rect key="frame" x="20" y="344" width="335" height="39"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6E-80-uyn">
+                                <rect key="frame" x="246" y="401" width="99" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Add Santa">
+                                    <color key="titleColor" red="0.99955540895462036" green="0.0043649729341268539" blue="0.0063005317933857441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="YeB-4n-ALt" firstAttribute="leading" secondItem="wbA-0b-zj2" secondAttribute="leading" constant="20" id="2IK-Ea-wfg"/>
                             <constraint firstItem="wbA-0b-zj2" firstAttribute="bottom" secondItem="XWB-YD-nfU" secondAttribute="bottom" id="4Uh-PT-NDM"/>
+                            <constraint firstItem="KLF-Tf-EQ5" firstAttribute="leading" secondItem="wbA-0b-zj2" secondAttribute="leading" constant="20" id="4Z6-w3-3qM"/>
                             <constraint firstItem="XWB-YD-nfU" firstAttribute="top" secondItem="wbA-0b-zj2" secondAttribute="top" id="AzY-lf-mv6"/>
+                            <constraint firstItem="wbA-0b-zj2" firstAttribute="trailing" secondItem="KLF-Tf-EQ5" secondAttribute="trailing" constant="259" id="Bf1-0D-uJ7"/>
                             <constraint firstItem="wbA-0b-zj2" firstAttribute="trailing" secondItem="XWB-YD-nfU" secondAttribute="trailing" id="C7v-Vg-Swj"/>
                             <constraint firstItem="XWB-YD-nfU" firstAttribute="leading" secondItem="wbA-0b-zj2" secondAttribute="leading" id="Lwt-ym-ZQH"/>
+                            <constraint firstItem="YGL-YQ-Kyh" firstAttribute="top" secondItem="KLF-Tf-EQ5" secondAttribute="bottom" constant="8" id="Lxd-oH-ceH"/>
+                            <constraint firstItem="ok5-V9-BJZ" firstAttribute="leading" secondItem="wbA-0b-zj2" secondAttribute="leading" constant="20" id="Sz9-rz-1e9"/>
+                            <constraint firstItem="wbA-0b-zj2" firstAttribute="trailing" secondItem="ok5-V9-BJZ" secondAttribute="trailing" constant="20" id="TMh-GX-uwT"/>
+                            <constraint firstItem="YGL-YQ-Kyh" firstAttribute="leading" secondItem="wbA-0b-zj2" secondAttribute="leading" constant="20" id="TNf-uH-XP5"/>
+                            <constraint firstItem="YeB-4n-ALt" firstAttribute="top" secondItem="YGL-YQ-Kyh" secondAttribute="bottom" constant="22" id="VnI-YL-LT5"/>
+                            <constraint firstItem="KLF-Tf-EQ5" firstAttribute="top" secondItem="wbA-0b-zj2" secondAttribute="top" constant="123" id="YaD-hZ-QuG"/>
+                            <constraint firstItem="ok5-V9-BJZ" firstAttribute="top" secondItem="YeB-4n-ALt" secondAttribute="bottom" constant="8" id="dxB-Ka-GFJ"/>
+                            <constraint firstItem="wbA-0b-zj2" firstAttribute="trailing" secondItem="YeB-4n-ALt" secondAttribute="trailing" constant="259" id="e9f-pl-Wt4"/>
+                            <constraint firstItem="wbA-0b-zj2" firstAttribute="trailing" secondItem="YGL-YQ-Kyh" secondAttribute="trailing" constant="20" id="shu-05-ahJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wbA-0b-zj2"/>
                     </view>
+                    <connections>
+                        <outlet property="santaEmail" destination="ok5-V9-BJZ" id="8qC-1O-0FJ"/>
+                        <outlet property="santaName" destination="YGL-YQ-Kyh" id="Ka7-Bh-mpn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrb-rW-y6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1657" y="175"/>
+            <point key="canvasLocation" x="1745" y="-340"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rh5-cs-EKV">
@@ -136,6 +321,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SantaPhoto.jpg" width="312" height="312"/>
+        <image name="SantaPhoto.jpg" width="3648" height="4864"/>
+        <image name="outdoorChristmasTree.jpg" width="3024" height="4032"/>
+        <image name="presents.jpg" width="4640" height="7148"/>
     </resources>
 </document>

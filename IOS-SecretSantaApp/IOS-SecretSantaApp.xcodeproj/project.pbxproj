@@ -15,7 +15,11 @@
 		C48CC4CB2272A8DB0068069D /* SantaStartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48CC4CA2272A8DB0068069D /* SantaStartPage.swift */; };
 		C48CC4CD227414500068069D /* NewExchangePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48CC4CC227414500068069D /* NewExchangePage.swift */; };
 		C48CC4CF2274149D0068069D /* AddSanta.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48CC4CE2274149D0068069D /* AddSanta.swift */; };
-		C49AEE572274170200F09A9C /* SantaPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C49AEE562274170200F09A9C /* SantaPhoto.jpg */; };
+		C49AEE592274C9F900F09A9C /* presents.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C49AEE582274C9F900F09A9C /* presents.jpg */; };
+		C49AEE5B2274CBB700F09A9C /* SantaPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C49AEE5A2274CBB700F09A9C /* SantaPhoto.jpg */; };
+		C49AEE5D2274D2C000F09A9C /* outdoorChristmasTree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C49AEE5C2274D2C000F09A9C /* outdoorChristmasTree.jpg */; };
+		C49AEE5F227610D500F09A9C /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AEE5E227610D500F09A9C /* Exchange.swift */; };
+		C49AEE63227632F000F09A9C /* SantaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AEE62227632F000F09A9C /* SantaCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +33,11 @@
 		C48CC4CA2272A8DB0068069D /* SantaStartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SantaStartPage.swift; sourceTree = "<group>"; };
 		C48CC4CC227414500068069D /* NewExchangePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExchangePage.swift; sourceTree = "<group>"; };
 		C48CC4CE2274149D0068069D /* AddSanta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSanta.swift; sourceTree = "<group>"; };
-		C49AEE562274170200F09A9C /* SantaPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = SantaPhoto.jpg; path = ../../../../Desktop/SantaPhoto.jpg; sourceTree = "<group>"; };
+		C49AEE582274C9F900F09A9C /* presents.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = presents.jpg; path = ../../../../Downloads/presents.jpg; sourceTree = "<group>"; };
+		C49AEE5A2274CBB700F09A9C /* SantaPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = SantaPhoto.jpg; path = ../../../../Downloads/SantaPhoto.jpg; sourceTree = "<group>"; };
+		C49AEE5C2274D2C000F09A9C /* outdoorChristmasTree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = outdoorChristmasTree.jpg; path = ../../../../Downloads/outdoorChristmasTree.jpg; sourceTree = "<group>"; };
+		C49AEE5E227610D500F09A9C /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
+		C49AEE62227632F000F09A9C /* SantaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SantaCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +79,11 @@
 				C48CC4CA2272A8DB0068069D /* SantaStartPage.swift */,
 				C48CC4CC227414500068069D /* NewExchangePage.swift */,
 				C48CC4CE2274149D0068069D /* AddSanta.swift */,
-				C49AEE562274170200F09A9C /* SantaPhoto.jpg */,
+				C49AEE5E227610D500F09A9C /* Exchange.swift */,
+				C49AEE62227632F000F09A9C /* SantaCell.swift */,
+				C49AEE582274C9F900F09A9C /* presents.jpg */,
+				C49AEE5A2274CBB700F09A9C /* SantaPhoto.jpg */,
+				C49AEE5C2274D2C000F09A9C /* outdoorChristmasTree.jpg */,
 			);
 			path = "IOS-SecretSantaApp";
 			sourceTree = "<group>";
@@ -136,8 +148,10 @@
 			files = (
 				C48CC4C32272A6B30068069D /* LaunchScreen.storyboard in Resources */,
 				C48CC4C02272A6B30068069D /* Assets.xcassets in Resources */,
-				C49AEE572274170200F09A9C /* SantaPhoto.jpg in Resources */,
+				C49AEE5D2274D2C000F09A9C /* outdoorChristmasTree.jpg in Resources */,
+				C49AEE5B2274CBB700F09A9C /* SantaPhoto.jpg in Resources */,
 				C48CC4BB2272A6B20068069D /* Main.storyboard in Resources */,
+				C49AEE592274C9F900F09A9C /* presents.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,8 +162,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C49AEE63227632F000F09A9C /* SantaCell.swift in Sources */,
 				C48CC4CF2274149D0068069D /* AddSanta.swift in Sources */,
 				C48CC4BE2272A6B20068069D /* IOS_SecretSantaApp.xcdatamodeld in Sources */,
+				C49AEE5F227610D500F09A9C /* Exchange.swift in Sources */,
 				C48CC4CB2272A8DB0068069D /* SantaStartPage.swift in Sources */,
 				C48CC4CD227414500068069D /* NewExchangePage.swift in Sources */,
 				C48CC4B62272A6B20068069D /* AppDelegate.swift in Sources */,
