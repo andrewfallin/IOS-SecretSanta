@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wi5-8f-qIx">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="exchangeCell" id="wi5-8f-qIx">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wi5-8f-qIx" id="Afb-o1-xi1">
@@ -27,7 +27,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="XvB-uw-nmv" kind="show" id="qBY-lX-MaT"/>
+                                    <segue destination="XvB-uw-nmv" kind="show" id="0o8-P8-Uhc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -224,9 +224,11 @@
                         <outlet property="exName" destination="G7a-S9-VAY" id="nH5-yt-Amr"/>
                         <outlet property="priceCap" destination="fC2-y8-BvX" id="6Ah-lm-cR0"/>
                         <outlet property="santaList" destination="z2J-P1-lw8" id="A2E-z6-KPr"/>
+                        <segue destination="i1L-y5-7fJ" kind="unwind" identifier="initializeExchange" unwindAction="unwindToStartWithSeque:" id="Q3S-BG-FML"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDv-ka-nx6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="i1L-y5-7fJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1072.8" y="-340.47976011994007"/>
         </scene>

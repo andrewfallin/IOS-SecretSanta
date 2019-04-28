@@ -1,5 +1,5 @@
 //
-//  Exchange.swift
+//  Santa.swift
 //  IOS-SecretSantaApp
 //
 //  Created by Andrew Fallin on 4/28/19.
@@ -8,9 +8,10 @@
 
 import Foundation
 
-class Exchange {
+class Santa{
     var name: String?
-    var santas: [Santa] = []
-    var priceCap: String?
-    var exDate: Date?
+    var email: String?
+    var assignment: String?
+    
+    //add email function here
 }

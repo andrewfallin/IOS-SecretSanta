@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import MessageUI
 
-class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
+class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, MFMailComposeViewControllerDelegate {
     
     
+    var newSantas: [Santa] = []
+    var newSantasArr: [String] = []
+    var newExchange: Exchange?
+    var selectedPriceCap: String? = "$5.00"
     
-    var newSantas: [String: String] = [:]
     var priceCapData: [String] = [String]()
    
     
@@ -29,6 +33,11 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.navigationItem.prompt = "Secret Santa"
         self.navigationItem.title = "New Exchange";
         
+        let startExchangeBB = UIBarButtonItem(title: "Start!", style: .plain, target: self, action: #selector(saveTapped))
+       // startExchangeBB.title = "Start!"
+        
+        self.navigationItem.rightBarButtonItem = startExchangeBB
+        
         santaList.delegate = self
         santaList.dataSource = self
         
@@ -40,6 +49,7 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
         priceCapData = ["$5.00", "$10.00", "$15.00", "$20.00", "$25.00", "$30.00", "$35.00", "$40.00", "$45.00", "$50.00", "$55.00", "$60.00", "$65.00", "$70.00", "$75.00", "$80.00", "$85.00", "$90.00", "$95.00", "$100.00", "No Cap...GO CRAZY!"]
     }
     
+    /* Sets all Contents and Formation for the Price Cap Picker*/
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -55,7 +65,13 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
         let mytitle = NSAttributedString(string: titledata, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         return mytitle
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedPriceCap = priceCapData[row]
+    }
+    /* ------- End of Price Cap Datat Picker ------ */
     
+    
+    /* ---------- Controlls Santa List Table -----------*/
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -68,8 +84,8 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         let row = indexPath.row
-        let santas = Array(newSantas.keys)[row]
-        cell.textLabel?.text = santas
+        let santas = newSantas[row]
+        cell.textLabel?.text = santas.name
         return cell
         
     }
@@ -83,12 +99,63 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
+    /* ------- End of santa list table -------- */
     
+    @objc func saveTapped(){
+        assignSantas()
+        newExchange = Exchange()
+        newExchange?.name = exName.text
+        newExchange?.exDate = datePicker.date
+        newExchange?.priceCap = selectedPriceCap
+        performSegue(withIdentifier: "initializeExchange", sender: nil)
+        
+    }
     
-    /* override func performSegue(withIdentifier identifier: String, sender: Any?) {
-     
+    func assignSantas(){
+        var assignees = newSantasArr
+        
+        
+        assignees.shuffle()
+       
+        for person in newSantas{
+            for person2 in assignees{
+                if (person.name != person2){
+                    person.assignment = person2
+                    let index = assignees.lastIndex(of: person2)
+                    assignees.remove(at: index!)
+                    break;
+                    
+                } else if (assignees.count == 1){
+                    let flip = newSantas[0].assignment
+                    newSantas[0].assignment = person2
+                    person.assignment = flip
+                   
+                }
+                
+            }
+
+            print(person.name! + "  :  " + person.assignment!)
+        }
+        
+        
+        
+    }
+    
+     /*override func performSegue(withIdentifier identifier: String, sender: Any?) {
+        
      }*/
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "initializeExchange"){
+            let newEx = segue.destination as! SantaStartPage
+            if (newExchange != nil){
+                newEx.exchanges.append(newExchange!)
+                // newEPage.newSantasArr.append((newSanta?.name)!)
+                newEx.tableView.reloadData()
+            }
+            
+        }
+    }
 
     /*
     // MARK: - Navigation

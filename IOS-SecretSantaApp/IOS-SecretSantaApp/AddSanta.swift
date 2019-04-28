@@ -14,7 +14,8 @@ class AddSanta: UIViewController {
     @IBOutlet weak var santaEmail: UITextField!
     
     var santaInfoArray: [String] = []
-
+    var newSanta: Santa?
+    
     
     
     override func viewDidLoad() {
@@ -34,10 +35,11 @@ class AddSanta: UIViewController {
     
     @objc func saveTapped(){
         
-        santaInfoArray.append(santaName.text!)
-        santaInfoArray.append(santaEmail.text!)
+        newSanta = Santa()
+        newSanta?.name = santaName.text!
+        newSanta?.email = santaEmail.text!
         performSegue(withIdentifier: "saveNewSanta", sender: nil)
-    
+
     }
     @objc func cancelTapped(){
         performSegue(withIdentifier: "cancelAddSegue", sender: nil)
@@ -46,8 +48,9 @@ class AddSanta: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "saveNewSanta"){
             let newEPage = segue.destination as! NewExchangePage
-            if (santaInfoArray.isEmpty != true){
-                newEPage.newSantas[santaInfoArray[0]] = santaInfoArray[1]
+            if (newSanta != nil){
+                newEPage.newSantas.append(newSanta!)
+                newEPage.newSantasArr.append((newSanta?.name)!)
                 newEPage.santaList.reloadData()
             }
             

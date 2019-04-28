@@ -10,6 +10,9 @@ import UIKit
 
 class SantaStartPage: UITableViewController {
 
+    
+    var exchanges: [Exchange] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,23 +27,25 @@ class SantaStartPage: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return exchanges.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "exchangeCell", for: indexPath)
 
-        // Configure the cell...
+        let row = indexPath.row
+        let exchange = exchanges[row]
+        cell.textLabel?.text = exchange.name
 
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.
@@ -86,5 +91,9 @@ class SantaStartPage: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func unwindToStart(seque: UIStoryboardSegue){
+        
+    }
 
 }
