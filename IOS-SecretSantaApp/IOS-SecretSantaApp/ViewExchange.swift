@@ -60,14 +60,35 @@ class ViewExchange: UIViewController, UITableViewDelegate, UITableViewDataSource
            // let index = newSantasArr.lastIndex(of: newSantas[indexPath.row].name!)
            // newSantasArr.remove(at: index!)
            // newSantas.remove(at: indexPath.row)
-            
-           // tableView.deleteRows(at: [indexPath], with: .fade)
+            if ((exchange?.santas.count)! > 2){
+                rearangeSantas(deletedSanta: (exchange?.santas[indexPath.row])!)
+                exchange?.santas.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }else {
+                let alert = UIAlertController(title: "OH NO!", message: "There will not be enough Santas to complete the exchange! If you wish to delete the exchange navigate to the exchange page.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true)
+                
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     /* ----------- end of table --------------*/
 
+    
+    func rearangeSantas(deletedSanta: Santa){
+        
+        let santas = exchange?.santas
+        for santa in santas!{
+            if(santa.assignment == deletedSanta.name){
+                santa.assignment = deletedSanta.assignment
+            }
+        }
+        
+
+        //send email
+    }
     /*
     // MARK: - Navigation
 
