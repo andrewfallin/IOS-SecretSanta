@@ -21,6 +21,7 @@
 		C49AEE5F227610D500F09A9C /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AEE5E227610D500F09A9C /* Exchange.swift */; };
 		C49AEE63227632F000F09A9C /* SantaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AEE62227632F000F09A9C /* SantaCell.swift */; };
 		C49AEE6522765F8000F09A9C /* Santa.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AEE6422765F8000F09A9C /* Santa.swift */; };
+		C49AEE6722766F3700F09A9C /* ViewExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AEE6622766F3700F09A9C /* ViewExchange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C49AEE5E227610D500F09A9C /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		C49AEE62227632F000F09A9C /* SantaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SantaCell.swift; sourceTree = "<group>"; };
 		C49AEE6422765F8000F09A9C /* Santa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Santa.swift; sourceTree = "<group>"; };
+		C49AEE6622766F3700F09A9C /* ViewExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExchange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				C48CC4C42272A6B30068069D /* Info.plist */,
 				C48CC4BC2272A6B20068069D /* IOS_SecretSantaApp.xcdatamodeld */,
 				C48CC4CA2272A8DB0068069D /* SantaStartPage.swift */,
+				C49AEE6622766F3700F09A9C /* ViewExchange.swift */,
 				C48CC4CC227414500068069D /* NewExchangePage.swift */,
 				C48CC4CE2274149D0068069D /* AddSanta.swift */,
 				C49AEE5E227610D500F09A9C /* Exchange.swift */,
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C49AEE63227632F000F09A9C /* SantaCell.swift in Sources */,
+				C49AEE6722766F3700F09A9C /* ViewExchange.swift in Sources */,
 				C48CC4CF2274149D0068069D /* AddSanta.swift in Sources */,
 				C48CC4BE2272A6B20068069D /* IOS_SecretSantaApp.xcdatamodeld in Sources */,
 				C49AEE5F227610D500F09A9C /* Exchange.swift in Sources */,

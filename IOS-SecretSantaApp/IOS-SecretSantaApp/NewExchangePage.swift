@@ -92,9 +92,11 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            //quiz.remove(at:  indexPath.row)
-           // tableView.deleteRows(at: [indexPath], with: .fade)
-            //numquestions -= 1;
+            let index = newSantasArr.lastIndex(of: newSantas[indexPath.row].name!)
+            newSantasArr.remove(at: index!)
+            newSantas.remove(at: indexPath.row)
+
+            tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
@@ -105,6 +107,7 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
         assignSantas()
         newExchange = Exchange()
         newExchange?.name = exName.text
+        newExchange?.santas = newSantas
         newExchange?.exDate = datePicker.date
         newExchange?.priceCap = selectedPriceCap
         performSegue(withIdentifier: "initializeExchange", sender: nil)
