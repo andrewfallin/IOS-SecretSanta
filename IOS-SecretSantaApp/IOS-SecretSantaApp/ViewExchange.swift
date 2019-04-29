@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewExchange: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,9 +17,14 @@ class ViewExchange: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var santasList: UITableView!
     @IBOutlet weak var priceCapLabel: UILabel!
     @IBOutlet weak var dateExchangeLabel: UILabel!
+    var managedObjectContext: NSManagedObjectContext!
+    var appDelegate: AppDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.appDelegate = UIApplication.shared.delegate as? AppDelegate
+        self.managedObjectContext =
+            appDelegate.persistentContainer.viewContext
         
         self.navigationItem.prompt = "Secret Santa"
         self.navigationItem.title = exchange?.name;
@@ -62,7 +68,10 @@ class ViewExchange: UIViewController, UITableViewDelegate, UITableViewDataSource
            // newSantas.remove(at: indexPath.row)
             if ((exchange?.santas.count)! > 2){
                 rearangeSantas(deletedSanta: (exchange?.santas[indexPath.row])!)
+                removeSanta(uid: (exchange?.santas[indexPath.row].uid)!)
+                
                 exchange?.santas.remove(at: indexPath.row)
+                updateSantas()
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }else {
                 let alert = UIAlertController(title: "OH NO!", message: "There will not be enough Santas to complete the exchange! If you wish to delete the exchange navigate to the exchange page.", preferredStyle: .alert)
@@ -89,6 +98,59 @@ class ViewExchange: UIViewController, UITableViewDelegate, UITableViewDataSource
 
         //send email
     }
+    
+    func updateSantas(){
+    
+        for santa in exchange!.santas {
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SantaEntity")
+            fetchRequest.predicate = NSPredicate(format: "uid = %@", santa.uid!)
+           /* var upSanta: [NSManagedObject]!
+            do {
+                upSanta = try self.managedObjectContext.fetch(fetchRequest)
+            } catch {
+                print("Gather error: \(error)")
+            }
+            for a in upSanta{
+                a.setValue(santa.assignment, forKey: "assignment")
+                print(fetchRequest.predicate!.value(forKey: "assignment")!)
+                print(santa.assignment!)
+            }*/
+            do {
+                let test = try managedObjectContext.fetch(fetchRequest)
+                let objectupdate = test[0]
+                objectupdate.setValue(santa.assignment, forKey: "assignment")
+                print(santa.name! + " : " + (objectupdate.value(forKey: "assignment") as! String))
+                do {
+                    try managedObjectContext.save()
+                    print("Success")
+                } catch {
+                    print("Error saving: \(error)")
+                }
+            } catch {
+                print("Problems")
+            }
+            
+        }
+        
+    }
+    
+    func removeSanta(uid: String) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SantaEntity")
+        fetchRequest.predicate = NSPredicate(format: "uid == %@", uid)
+        var santas: [NSManagedObject]!
+        do {
+            santas = try self.managedObjectContext.fetch(fetchRequest)
+            print("Removed")
+        } catch {
+            print("Remove Exchange error: \(error)")
+        }
+        for s in santas {
+            
+            self.managedObjectContext.delete(s)
+        }
+        self.appDelegate.saveContext() // In AppDelegate.swift
+    }
+   
     /*
     // MARK: - Navigation
 

@@ -7,15 +7,22 @@
 //
 
 import UIKit
-
+import CoreData
 class SantaStartPage: UITableViewController {
 
     
     var exchanges: [Exchange] = []
+    var managedObjectContext: NSManagedObjectContext!
+    var appDelegate: AppDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.appDelegate = UIApplication.shared.delegate as? AppDelegate
+        self.managedObjectContext =
+            appDelegate.persistentContainer.viewContext
+        
+        retrieveExchange()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -75,6 +82,7 @@ class SantaStartPage: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             //send email to all people saying exchange was canceled
+            removeExchange(exname: exchanges[indexPath.row].name!)
             exchanges.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -107,6 +115,73 @@ class SantaStartPage: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func retrieveExchange()
+    {
+        var exchange: Exchange!
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ExchangeEntity")
+        var retExchanges: [NSManagedObject]!
+        do {
+            retExchanges = try self.managedObjectContext.fetch(fetchRequest)
+        } catch {
+            print("Fetch error: \(error)")
+        }
+        print("Found \(retExchanges.count) Exchanges")
+        for ex in retExchanges{
+            exchange = Exchange()
+            exchange.name = ex.value(forKey: "name") as? String
+            exchange.exDate = ex.value(forKey: "date") as? Date
+            exchange.priceCap = ex.value(forKey: "pricecap") as? String
+            exchange.santas = retrieveSantaData(euid: ex.value(forKey: "uid") as! String)
+            exchanges.append(exchange)
+        }
+    }
+    
+    func retrieveSantaData(euid: String) -> [Santa]
+    {
+        var santa: Santa!
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SantaEntity")
+        var retSantas: [NSManagedObject]!
+        var loadedSantas: [Santa] = []
+        do {
+            retSantas = try self.managedObjectContext.fetch(fetchRequest)
+        } catch {
+            print("Fetch error: \(error)")
+        }
+        print("Found \(retSantas.count) Santas")
+        for p in retSantas{
+            if ((p.value(forKey: "euid") as! String) == euid){
+                santa = Santa()
+                santa.name = p.value(forKey: "name") as? String
+                santa.assignment = p.value(forKey: "assignment") as? String
+                santa.email = p.value(forKey: "email") as? String
+                loadedSantas.append(santa)
+            }
+        }
+        return loadedSantas
+    }
+    
+    func removeExchange(exname: String) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ExchangeEntity")
+        let otherFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SantaEntity")
+        fetchRequest.predicate = NSPredicate(format: "name == %@", exname)
+        var exchanges: [NSManagedObject]!
+        var santas: [NSManagedObject]!
+        do {
+            exchanges = try self.managedObjectContext.fetch(fetchRequest)
+            santas = try self.managedObjectContext.fetch(otherFetchRequest)
+            print("Removed")
+        } catch {
+            print("Remove Exchange error: \(error)")
+        }
+        for ex in exchanges {
+            for s in santas{
+                self.managedObjectContext.delete(s)
+            }
+            self.managedObjectContext.delete(ex)
+        }
+        self.appDelegate.saveContext() // In AppDelegate.swift
+    }
     
     @IBAction func unwindToStart(seque: UIStoryboardSegue){
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import CoreData
 
 class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, MFMailComposeViewControllerDelegate {
     
@@ -25,10 +26,17 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var priceCap: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    var managedObjectContext: NSManagedObjectContext!
+    var appDelegate: AppDelegate!
+    var exchangeID: String?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.appDelegate = UIApplication.shared.delegate as? AppDelegate
+        self.managedObjectContext = appDelegate.persistentContainer.viewContext
+        
         // Do any additional setup after loading the view.
         self.navigationItem.prompt = "Secret Santa"
         self.navigationItem.title = "New Exchange";
@@ -47,6 +55,9 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
         datePicker.setValue(UIColor.white, forKeyPath: "textColor")
         
         priceCapData = ["$5.00", "$10.00", "$15.00", "$20.00", "$25.00", "$30.00", "$35.00", "$40.00", "$45.00", "$50.00", "$55.00", "$60.00", "$65.00", "$70.00", "$75.00", "$80.00", "$85.00", "$90.00", "$95.00", "$100.00", "No Cap...GO CRAZY!"]
+        
+        exchangeID = idGenerator()
+
     }
     
     /* Sets all Contents and Formation for the Price Cap Picker*/
@@ -110,8 +121,44 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
         newExchange?.santas = newSantas
         newExchange?.exDate = datePicker.date
         newExchange?.priceCap = selectedPriceCap
+        saveSantas()
+        
+        let exchangeTBS = NSEntityDescription.insertNewObject(forEntityName: "ExchangeEntity", into: managedObjectContext)
+        exchangeTBS.setValue(newExchange!.name, forKey: "name")
+        exchangeTBS.setValue(newExchange!.exDate, forKey: "date")
+        exchangeTBS.setValue(newExchange!.priceCap, forKey: "pricecap")
+        exchangeTBS.setValue(exchangeID, forKey: "uid")
+        do {
+            try managedObjectContext.save()
+            print("Success")
+        } catch {
+            print("Error saving: \(error)")
+        }
         performSegue(withIdentifier: "initializeExchange", sender: nil)
         
+    }
+    
+    func saveSantas(){
+        for santa in newSantas {
+            let newuid = idGenerator()
+             let santaTBS = NSEntityDescription.insertNewObject(forEntityName: "SantaEntity", into: managedObjectContext)
+            santaTBS.setValue(santa.name, forKey: "name")
+            santaTBS.setValue(santa.assignment, forKey: "assignment")
+            santaTBS.setValue(santa.email, forKey: "email")
+            santaTBS.setValue(newuid, forKey: "uid")
+            santaTBS.setValue(exchangeID, forKey: "euid")
+            santa.uid = newuid
+        }
+        do {
+            try managedObjectContext.save()
+            print("Success")
+        } catch {
+            print("Error saving: \(error)")
+        }
+    }
+    
+    func idGenerator() -> String{
+        return String(Int.random(in: 0..<100))
     }
     
     func assignSantas(){
@@ -132,12 +179,11 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
                     let flip = newSantas[0].assignment
                     newSantas[0].assignment = person2
                     person.assignment = flip
-                   
+
                 }
                 
             }
 
-            print(person.name! + "  :  " + person.assignment!)
         }
         
         

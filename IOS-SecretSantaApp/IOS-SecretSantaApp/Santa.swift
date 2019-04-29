@@ -12,6 +12,7 @@ class Santa{
     var name: String?
     var email: String?
     var assignment: String?
+    var uid: String?
     
     //add email function here
 }
