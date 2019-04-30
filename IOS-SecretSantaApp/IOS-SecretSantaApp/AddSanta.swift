@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddSanta: UIViewController {
+class AddSanta: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var santaName: UITextField!
     @IBOutlet weak var santaEmail: UITextField!
@@ -23,6 +23,8 @@ class AddSanta: UIViewController {
 
         self.navigationItem.prompt = "Secret Santa"
         self.navigationItem.title = "Add Santa";
+        santaName.delegate = self
+        santaEmail.delegate = self
         
         let saveSantaBB = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
         let cancelBB = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
@@ -56,6 +58,11 @@ class AddSanta: UIViewController {
             
         }
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
     /*
     // MARK: - Navigation

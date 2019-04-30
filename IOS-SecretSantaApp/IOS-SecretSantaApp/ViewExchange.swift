@@ -62,10 +62,7 @@ class ViewExchange: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-           // let index = newSantasArr.lastIndex(of: newSantas[indexPath.row].name!)
-           // newSantasArr.remove(at: index!)
-           // newSantas.remove(at: indexPath.row)
+            
             if ((exchange?.santas.count)! > 2){
                 rearangeSantas(deletedSanta: (exchange?.santas[indexPath.row])!)
                 removeSanta(uid: (exchange?.santas[indexPath.row].uid)!)

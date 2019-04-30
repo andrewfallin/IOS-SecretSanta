@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 import CoreData
 
-class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, MFMailComposeViewControllerDelegate {
+class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, MFMailComposeViewControllerDelegate, UITextFieldDelegate{
     
     
     var newSantas: [Santa] = []
@@ -37,6 +37,7 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.appDelegate = UIApplication.shared.delegate as? AppDelegate
         self.managedObjectContext = appDelegate.persistentContainer.viewContext
         
+        exName.delegate = self
         // Do any additional setup after loading the view.
         self.navigationItem.prompt = "Secret Santa"
         self.navigationItem.title = "New Exchange";
@@ -204,6 +205,11 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
             
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 
     /*
