@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 import CoreData
 
-class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, MFMailComposeViewControllerDelegate, UITextFieldDelegate{
+class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     
     
     var newSantas: [Santa] = []
@@ -29,7 +29,8 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     var managedObjectContext: NSManagedObjectContext!
     var appDelegate: AppDelegate!
     var exchangeID: String?
-
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,6 +123,7 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
         newExchange?.santas = newSantas
         newExchange?.exDate = datePicker.date
         newExchange?.priceCap = selectedPriceCap
+        sendEmail()
         saveSantas()
         
         let exchangeTBS = NSEntityDescription.insertNewObject(forEntityName: "ExchangeEntity", into: managedObjectContext)
@@ -212,6 +214,58 @@ class NewExchangePage: UIViewController, UITableViewDelegate, UITableViewDataSou
         return false
     }
 
+    
+    func sendEmail() {
+        //ios can't send email's directly from the app, So I chose to use mailgun as my api service
+       
+
+        for santa in newSantas{
+            let session = URLSession.shared
+            let request: NSMutableURLRequest = URLRequest(url: URL(string: "https://api.mailgun.net/v3/sandboxb5e82ee7d5d5467a8851b263bb30b38b.mailgun.org/messages")!) as! NSMutableURLRequest
+            request.httpMethod = "POST"
+            
+            let loginstring = NSString(format: "%@:%@", "api","7b3c01267d0c5dd5a475a67091fb9d79-7bce17e5-13aebe04")
+            let loginData: NSData = loginstring.data(using: String.Encoding.utf8.rawValue)! as NSData
+            let base64LoginString = loginData.base64EncodedString(options: [])
+            request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+            let emaildata = "from=Secret Santa App!<mailgun@sandboxb5e82ee7d5d5467a8851b263bb30b38b.mailgun.org>&to=<" + santa.email! + ">&subject= Secret Santa Rules and Assignment!&text= Dear " + santa.name! + ",\n\nWelcome to the " + exName.text! + " exchange! Here are the general rules:\n       - You cannot spend more than the Price Cap\n       - Get a gift for your assigned person\n       - Don't be an animal, wrap your gift\n       - Have fun!\n\nPrice Cap: "+selectedPriceCap!+"\nDate of Exchange: " + formatDate(date: newExchange!.exDate!) + "\nAssignment: " + santa.assignment! + "\n\nMerry Christmas!"
+           // request.setValue("key-7b3c01267d0c5dd5a475a67091fb9d79-7bce17e5-13aebe04", forHTTPHeaderField: "api")
+            request.httpBody = emaildata.data(using: String.Encoding.utf8)
+            
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {(emaildata, response, error) -> Void in
+                
+                if let error = error {
+                print(error)
+                }
+                if let response = response {
+                    
+                    print("url = \(response.url!)")
+                    print("response = \(response)")
+                    let httpResponse = response as! HTTPURLResponse
+                    print("response code = \(httpResponse.statusCode)")
+                }
+                
+                })
+        
+            task.resume()
+            
+            
+        }
+    }
+    
+    
+    
+    func formatDate(date: Date) -> String{
+        //changes format of the date and converts it to a string
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let myString = formatter.string(from: date) // string purpose I add here
+        let yourDate = formatter.date(from: myString)
+        formatter.dateFormat = "dd-MMM-yyyy"
+        let myStringafd = formatter.string(from: yourDate!) //date string
+        
+        return myStringafd
+    }
     /*
     // MARK: - Navigation
 
